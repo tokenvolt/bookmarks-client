@@ -11,8 +11,7 @@ var Header = React.createClass({
       <div>
         <Navbar inverse brand={this.props.name} >
           <Nav>
-            <NavItem key={1} href="#">Home</NavItem>
-            <NavItem key={2} href="#">About</NavItem>
+            <NavItem key={1} href="#">Add New</NavItem>
           </Nav>
         </Navbar>
       </div>

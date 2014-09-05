@@ -1,3 +1,5 @@
+var BookmarkStore = require('./bookmark.js');
+
 module.exports = {
-  // stores
+  BookmarkStore: new BookmarkStore()
 };

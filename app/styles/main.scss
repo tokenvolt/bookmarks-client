@@ -3,4 +3,54 @@
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "../bower_components/bootswatch-scss/cosmo/bootswatch";
 
+$fa-font-path: "../bower_components/font-awesome/fonts" !default;
+@import "../bower_components/font-awesome/scss/font-awesome";
+
 @import "bootstrap-overrides";
+
+.search-bar {
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+.bookmarks-list {
+  ul {
+    list-style: none;
+    padding: 0 15px;
+
+    li {
+      border-bottom: 1px solid #bbb;
+      padding: 15px 15px 5px 15px;
+
+      span.remove-button {
+        cursor: pointer;
+      }
+
+      &:hover {
+        background-color: #E3FCFF;
+      }
+
+      .bookmark-title {
+        margin-bottom: 5px;
+
+        a {
+          color: #333;
+          font-weight: bold;
+          font-size: 1.3em;
+          margin-right: 15px;
+        }
+
+
+        span.label {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+      }
+
+      .bookmark-meta {
+        font-size: 1em;
+        color: #999;
+      }
+    }
+  }
+}
