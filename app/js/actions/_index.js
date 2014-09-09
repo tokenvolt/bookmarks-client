@@ -1,11 +1,5 @@
-var Constants = require("../constants");
+var BookmarksActions = require("./bookmarks");
 
 module.exports = {
-  removeBookmark: function(id) {
-    this.dispatch(Constants.REMOVE_BOOKMARK, {id: id});
-  },
-
-  searchBookmark: function(query) {
-    this.dispatch(Constants.SEARCH_BOOKMARK, {query: query});
-  }
+  bookmarks: BookmarksActions
 };
