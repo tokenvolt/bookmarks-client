@@ -1,14 +1,13 @@
-var _ = require('lodash');
-var Fluxxor = require('fluxxor');
-var Constants = require("../constants");
-var Server    = require("../server");
-var Http = require('superagent');
+var _               = require('lodash');
+var Fluxxor         = require('fluxxor');
+var Constants       = require("../constants");
 
 module.exports = Fluxxor.createStore({
   initialize: function(options) {
-    this.list = this.fetch();
+    this.list = [];
 
     this.bindActions(Constants.ADD_BOOKMARK, 'handleAddBookmark',
+                     Constants.LOAD_BOOKMARKS, 'handleLoadBookmarks',
                      Constants.REMOVE_BOOKMARK, 'handleRemoveBookmark',
                      Constants.SEARCH_BOOKMARK, 'handleSearchBookmark');
   },
@@ -17,30 +16,19 @@ module.exports = Fluxxor.createStore({
     console.log('added');
   },
 
-  handleSearchBookmark: function(payload) {
-    if (!payload.query) {
-      this.list = this.fetch();
-    } else {
-      this.list = this.search(payload.query);
-    }
-
+  handleLoadBookmarks: function(payload) {
+    this.list = payload.bookmarks;
     this.emit("change");
   },
 
   handleRemoveBookmark: function(payload) {
-    _.remove(this.list, function(boomark) { return boomark.id == payload.id; });
+    _.remove(this.list, function(boomark) { return boomark.slug == payload.slug; });
     this.emit("change");
   },
 
-  fetch: function() {
-    // Fetch bookmarks from server
-
-    return [
-      {id: 1, title: 'vk', url: 'http://vk.com', tags: ['ruby', 'js', 'java']},
-      {id: 2, title: 'facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook facebook', url: 'http://facebook.com', tags: ['ruby', 'erlang']},
-      {id: 3, title: 'twitter', url: 'http://twitter.com', tags: ['ruby', 'js']},
-      {id: 4, title: 'google', url: 'http://google.com', tags: ['ruby', 'js']}
-    ];
+  handleSearchBookmark: function(payload) {
+    this.list = payload.bookmarks;
+    this.emit("change");
   },
 
   search: function() {
