@@ -14,6 +14,13 @@ $fa-font-path: "../bower_components/font-awesome/fonts" !default;
 }
 
 .bookmarks-list {
+  overflow-y: auto;
+  height: 800px;
+
+  h2 {
+    padding: 0 30px;
+  }
+
   ul {
     list-style: none;
     padding: 0 15px;
@@ -53,4 +60,16 @@ $fa-font-path: "../bower_components/font-awesome/fonts" !default;
       }
     }
   }
+
+  .nothing-found {
+    padding-left: 20px;
+  }
+
+  button.load-more {
+    margin-top: 10px;
+  }
+}
+
+.new-bookmark {
+  padding: 0 15px;
 }

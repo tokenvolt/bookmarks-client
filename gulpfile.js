@@ -85,4 +85,8 @@ gulp.task('default', ['lint',
 );
 
 // build task
-gulp.task('build');
+gulp.task('build', ['lint',
+                    'styles',
+                    'js',
+                    'copy-bower-components',
+                    'copy-index']);

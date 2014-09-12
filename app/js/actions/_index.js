@@ -1,4 +1,4 @@
-var BookmarksActions = require("./bookmarks");
+var BookmarksActions   = require("./bookmarks");
 
 module.exports = {
   bookmarks: BookmarksActions

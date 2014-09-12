@@ -5,6 +5,7 @@ var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Header          = require('./header.jsx');
+var Footer          = require('./footer.jsx');
 var Bookmarklet     = require('./bookmarklet.jsx');
 
 var App = React.createClass({
@@ -22,6 +23,10 @@ var App = React.createClass({
     return {
       bookmarks: flux.store("BookmarkStore").getState()
     };
+  },
+
+  componentDidMount: function() {
+    this.getFlux().actions.bookmarks.fetch();
   },
 
   render: function() {

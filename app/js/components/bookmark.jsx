@@ -9,12 +9,6 @@ var BookmarkTag = require('./bookmark_tag.jsx');
 var Bookmark = React.createClass({
   mixins: [FluxChildMixin],
 
-  getDefaultProps: function() {
-    return {
-      tags: ['ruby']
-    }
-  },
-
   getInitialState: function() {
     return {
       overlayed: false
@@ -24,12 +18,12 @@ var Bookmark = React.createClass({
   render: function() {
     var tags = this.props.tags.map(function(tag, index) {
       return (
-        <BookmarkTag title={tag} />
+        <BookmarkTag title={tag.title} />
       );
     });
 
     return (
-      <li>
+      <div>
         <span className="remove-button pull-right" onClick={this.remove}>
           <i className="fa fa-remove"></i>
         </span>
@@ -40,12 +34,12 @@ var Bookmark = React.createClass({
         <div className="bookmark-meta">
           {Moment(this.props.createdAt).format('MMMM Do YYYY, HH:mm:ss')}
         </div>
-      </li>
+      </div>
     )
   },
 
   remove: function() {
-    this.getFlux().actions.bookmarks.remove(this.props.slug);
+    if (confirm('For real, bro?')) this.getFlux().actions.bookmarks.remove(this.props.slug);
   }
 });
 
