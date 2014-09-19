@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
 gem 'capistrano'
-gem 'capistrano-nvm', require: false
+gem 'capistrano-scm-local', '~> 0.1'
